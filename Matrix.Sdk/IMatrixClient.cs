@@ -43,6 +43,7 @@ namespace Matrix.Sdk
         void Stop();
 
         Task<CreateRoomResponse> CreateTrustedPrivateRoomAsync(string[] invitedUserIds);
+        Task<CreateRoomResponse> CreateTrustedPrivateRoomAsync(string[] invitedUserIds, string roomType);
 
         Task<JoinRoomResponse> JoinTrustedPrivateRoomAsync(string roomId);
 

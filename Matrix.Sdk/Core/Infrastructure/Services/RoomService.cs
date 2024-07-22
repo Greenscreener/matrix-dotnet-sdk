@@ -20,14 +20,21 @@ namespace Matrix.Sdk.Core.Infrastructure.Services
         {
         }
 
+
         public async Task<CreateRoomResponse> CreateRoomAsync(string accessToken, string[]? members,
-            CancellationToken cancellationToken)
+            CancellationToken cancellationToken) {
+            return await CreateRoomAsync(accessToken, members, null, cancellationToken);
+        }
+
+        public async Task<CreateRoomResponse> CreateRoomAsync(string accessToken, string[]? members,
+            string? roomType, CancellationToken cancellationToken)
         {
             var model = new CreateRoomRequest
             (
                 Invite: members,
                 Preset: Preset.TrustedPrivateChat,
-                IsDirect: true
+                IsDirect: true,
+                CreationContent: roomType is not null ? new CreationContent(Type: roomType) : null
             );
 
             HttpClient httpClient = CreateHttpClient(accessToken);

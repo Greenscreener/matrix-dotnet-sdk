@@ -8,5 +8,10 @@ namespace Matrix.Sdk.Core.Infrastructure.Dto.Room.Create
         string[]? Invite = null,
         string? RoomVersion = null,
         Preset? Preset = null,
-        bool? IsDirect = null);
+        bool? IsDirect = null,
+        CreationContent? CreationContent = null);
+
+    public record CreationContent(
+        string? Type = null
+    );
 }

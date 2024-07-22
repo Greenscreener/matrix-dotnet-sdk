@@ -118,6 +118,9 @@ namespace Matrix.Sdk
             IsSyncing = _pollingService.IsSyncing;
         }
 
+        public async Task<CreateRoomResponse> CreateTrustedPrivateRoomAsync(string[] invitedUserIds, string roomType) =>
+            await _roomService.CreateRoomAsync(_accessToken!, invitedUserIds, roomType, _cts.Token);
+
         public async Task<CreateRoomResponse> CreateTrustedPrivateRoomAsync(string[] invitedUserIds) =>
             await _roomService.CreateRoomAsync(_accessToken!, invitedUserIds, _cts.Token);
 
